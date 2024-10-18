@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "dart:developer";
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
 }
 
 class _QuizApp extends StatefulWidget {
-  const _QuizApp({super.key});
+  const _QuizApp();
 
   @override
   State<_QuizApp> createState() {
@@ -98,13 +97,13 @@ class _QuizAppState extends State<_QuizApp> {
   WidgetStatePropertyAll<Color?> giveColor(int optionIndex) {
     if (optionIndex == allQuestions[currentIndex]["correctOption"] &&
         selectedIndex != -1) {
-      return WidgetStatePropertyAll(Colors.green);
+      return const WidgetStatePropertyAll(Colors.green);
     }
 
     if (selectedIndex == optionIndex) {
-      return WidgetStatePropertyAll(Colors.red);
+      return const WidgetStatePropertyAll(Colors.red);
     }
-    return WidgetStatePropertyAll(null);
+    return const WidgetStatePropertyAll(null);
   }
 
   Scaffold isQuestion() {
@@ -130,7 +129,7 @@ class _QuizAppState extends State<_QuizApp> {
                 const SizedBox(width: 120),
                 Text(
                   "Question : ${currentIndex + 1}/${allQuestions.length} ",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.w600,
                       color: Colors.cyan),
@@ -140,7 +139,7 @@ class _QuizAppState extends State<_QuizApp> {
             const SizedBox(height: 30),
             Text(
               allQuestions[currentIndex]["question"],
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 23,
                 fontWeight: FontWeight.w500,
                 color: Colors.purple,
@@ -159,13 +158,14 @@ class _QuizAppState extends State<_QuizApp> {
                   }
                   setState(() {});
                 },
-                child: Text(
-                  allQuestions[currentIndex]["options"][0],
-                  style: TextStyle(fontSize: 25, color: Colors.black),
-                ),
-                style: ButtonStyle(
+                   style: ButtonStyle(
                   backgroundColor: giveColor(0),
                 ),
+                child: Text(
+                  allQuestions[currentIndex]["options"][0],
+                  style: const TextStyle(fontSize: 25, color: Colors.black),
+                ),
+             
               ),
             ),
             const SizedBox(height: 30),
@@ -181,13 +181,14 @@ class _QuizAppState extends State<_QuizApp> {
                   }
                   setState(() {});
                 },
-                child: Text(
-                  allQuestions[currentIndex]["options"][1],
-                  style: TextStyle(fontSize: 25, color: Colors.black),
-                ),
-                style: ButtonStyle(
+                 style: ButtonStyle(
                   backgroundColor: giveColor(1),
                 ),
+                child: Text(
+                  allQuestions[currentIndex]["options"][1],
+                  style: const TextStyle(fontSize: 25, color: Colors.black),
+                ),
+               
               ),
             ),
             const SizedBox(height: 30),
@@ -203,13 +204,14 @@ class _QuizAppState extends State<_QuizApp> {
                   }
                   setState(() {});
                 },
-                child: Text(
-                  allQuestions[currentIndex]["options"][2],
-                  style: TextStyle(fontSize: 25, color: Colors.black),
-                ),
                 style: ButtonStyle(
                   backgroundColor: giveColor(2),
                 ),
+                child: Text(
+                  allQuestions[currentIndex]["options"][2],
+                  style: const TextStyle(fontSize: 25, color: Colors.black),
+                ),
+                
               ),
             ),
             const SizedBox(height: 30),
@@ -225,13 +227,14 @@ class _QuizAppState extends State<_QuizApp> {
                   }
                   setState(() {});
                 },
-                child: Text(
-                  allQuestions[currentIndex]["options"][3],
-                  style: TextStyle(fontSize: 25, color: Colors.black),
-                ),
-                style: ButtonStyle(
+                 style: ButtonStyle(
                   backgroundColor: giveColor(3),
                 ),
+                child: Text(
+                  allQuestions[currentIndex]["options"][3],
+                  style: const TextStyle(fontSize: 25, color: Colors.black),
+                ),
+               
               ),
             ),
           ],
@@ -299,7 +302,10 @@ class _QuizAppState extends State<_QuizApp> {
                 questionPage = true;
                 setState(() {});
               },
-              child: Text(
+              style: const ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(Colors.yellow),
+              ),
+              child: const Text(
                 "Reset",
                 style: TextStyle(
                   fontSize: 30,
@@ -307,9 +313,7 @@ class _QuizAppState extends State<_QuizApp> {
                   color: Colors.red,
                 ),
               ),
-              style: ButtonStyle(
-                backgroundColor: WidgetStatePropertyAll(Colors.yellow),
-              ),
+              
             )
           ],
         ),
